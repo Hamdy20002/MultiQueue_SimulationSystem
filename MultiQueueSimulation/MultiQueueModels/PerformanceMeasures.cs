@@ -16,15 +16,15 @@ namespace MultiQueueModels
 
         public decimal AvWaitingTime(int X, int Y)
         {
-            decimal res = ((decimal)X / (decimal)Y);
-            res = ( Math.Round(res, 2)+0.01M );
+            decimal res = (X /(decimal)Y);
+            res = Math.Round(res, 2);
             return res;
         }
 
         public decimal WaitProbability(int X, int Y)
         {
-            decimal res = ((decimal)X / (decimal)Y);
-            res = (Math.Round(res, 2) + 0.01M);
+            decimal res = (X / (decimal)Y);
+            res = Math.Round(res, 2);
             return res;
         }
 

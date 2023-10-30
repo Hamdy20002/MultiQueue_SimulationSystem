@@ -57,3 +57,9 @@ C:\Users\Abdelrahman Hamdy\Music\project\Simulation24\MultiQueueSimulation\Multi
 C:\Users\Abdelrahman Hamdy\Music\project\Simulation24\MultiQueueSimulation\MultiQueueModels\obj\Debug\MultiQueueModels.csproj.CoreCompileInputs.cache
 C:\Users\Abdelrahman Hamdy\Music\project\Simulation24\MultiQueueSimulation\MultiQueueModels\obj\Debug\MultiQueueModels.dll
 C:\Users\Abdelrahman Hamdy\Music\project\Simulation24\MultiQueueSimulation\MultiQueueModels\obj\Debug\MultiQueueModels.pdb
+G:\FCIS\4th\semester1\Laps\Modeling\Project\Simulation24\MultiQueueSimulation\MultiQueueModels\bin\Debug\MultiQueueModels.dll
+G:\FCIS\4th\semester1\Laps\Modeling\Project\Simulation24\MultiQueueSimulation\MultiQueueModels\bin\Debug\MultiQueueModels.pdb
+G:\FCIS\4th\semester1\Laps\Modeling\Project\Simulation24\MultiQueueSimulation\MultiQueueModels\obj\Debug\MultiQueueModels.csproj.AssemblyReference.cache
+G:\FCIS\4th\semester1\Laps\Modeling\Project\Simulation24\MultiQueueSimulation\MultiQueueModels\obj\Debug\MultiQueueModels.csproj.CoreCompileInputs.cache
+G:\FCIS\4th\semester1\Laps\Modeling\Project\Simulation24\MultiQueueSimulation\MultiQueueModels\obj\Debug\MultiQueueModels.dll
+G:\FCIS\4th\semester1\Laps\Modeling\Project\Simulation24\MultiQueueSimulation\MultiQueueModels\obj\Debug\MultiQueueModels.pdb

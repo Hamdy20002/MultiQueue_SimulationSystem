@@ -136,3 +136,17 @@ C:\Users\Abdelrahman Hamdy\Music\project\Simulation24\MultiQueueSimulation\Multi
 C:\Users\Abdelrahman Hamdy\Music\project\Simulation24\MultiQueueSimulation\MultiQueueSimulation\obj\Debug\MultiQueueSimulation.csproj.CopyComplete
 C:\Users\Abdelrahman Hamdy\Music\project\Simulation24\MultiQueueSimulation\MultiQueueSimulation\obj\Debug\MultiQueueSimulation.exe
 C:\Users\Abdelrahman Hamdy\Music\project\Simulation24\MultiQueueSimulation\MultiQueueSimulation\obj\Debug\MultiQueueSimulation.pdb
+G:\FCIS\4th\semester1\Laps\Modeling\Project\Simulation24\MultiQueueSimulation\MultiQueueSimulation\bin\Debug\MultiQueueSimulation.exe.config
+G:\FCIS\4th\semester1\Laps\Modeling\Project\Simulation24\MultiQueueSimulation\MultiQueueSimulation\bin\Debug\MultiQueueSimulation.exe
+G:\FCIS\4th\semester1\Laps\Modeling\Project\Simulation24\MultiQueueSimulation\MultiQueueSimulation\bin\Debug\MultiQueueSimulation.pdb
+G:\FCIS\4th\semester1\Laps\Modeling\Project\Simulation24\MultiQueueSimulation\MultiQueueSimulation\bin\Debug\MultiQueueModels.dll
+G:\FCIS\4th\semester1\Laps\Modeling\Project\Simulation24\MultiQueueSimulation\MultiQueueSimulation\bin\Debug\MultiQueueModels.pdb
+G:\FCIS\4th\semester1\Laps\Modeling\Project\Simulation24\MultiQueueSimulation\MultiQueueSimulation\obj\Debug\MultiQueueSimulation.csproj.AssemblyReference.cache
+G:\FCIS\4th\semester1\Laps\Modeling\Project\Simulation24\MultiQueueSimulation\MultiQueueSimulation\obj\Debug\MultiQueueSimulation.Form1.resources
+G:\FCIS\4th\semester1\Laps\Modeling\Project\Simulation24\MultiQueueSimulation\MultiQueueSimulation\obj\Debug\MultiQueueSimulation.Properties.Resources.resources
+G:\FCIS\4th\semester1\Laps\Modeling\Project\Simulation24\MultiQueueSimulation\MultiQueueSimulation\obj\Debug\MultiQueueSimulation.csproj.GenerateResource.cache
+G:\FCIS\4th\semester1\Laps\Modeling\Project\Simulation24\MultiQueueSimulation\MultiQueueSimulation\obj\Debug\MultiQueueSimulation.csproj.CoreCompileInputs.cache
+G:\FCIS\4th\semester1\Laps\Modeling\Project\Simulation24\MultiQueueSimulation\MultiQueueSimulation\obj\Debug\MultiQueueSimulation.csproj.CopyComplete
+G:\FCIS\4th\semester1\Laps\Modeling\Project\Simulation24\MultiQueueSimulation\MultiQueueSimulation\obj\Debug\MultiQueueSimulation.exe
+G:\FCIS\4th\semester1\Laps\Modeling\Project\Simulation24\MultiQueueSimulation\MultiQueueSimulation\obj\Debug\MultiQueueSimulation.pdb
+G:\FCIS\4th\semester1\Laps\Modeling\Project\Simulation24\MultiQueueSimulation\MultiQueueSimulation\obj\Debug\MultiQueueSimulation.Form2.resources

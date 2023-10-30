@@ -46,15 +46,16 @@
             this.IdleProb = new System.Windows.Forms.TextBox();
             this.Utilization = new System.Windows.Forms.TextBox();
             this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.button3 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(121, 522);
+            this.button1.Location = new System.Drawing.Point(48, 522);
             this.button1.Margin = new System.Windows.Forms.Padding(4);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(197, 43);
+            this.button1.Size = new System.Drawing.Size(177, 43);
             this.button1.TabIndex = 0;
             this.button1.Text = "Browse";
             this.button1.UseVisualStyleBackColor = true;
@@ -62,7 +63,7 @@
             // 
             // button2
             // 
-            this.button2.Location = new System.Drawing.Point(560, 522);
+            this.button2.Location = new System.Drawing.Point(401, 522);
             this.button2.Margin = new System.Windows.Forms.Padding(4);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(177, 43);
@@ -237,11 +238,22 @@
             this.comboBox1.TabIndex = 18;
             this.comboBox1.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged);
             // 
+            // button3
+            // 
+            this.button3.Location = new System.Drawing.Point(737, 522);
+            this.button3.Name = "button3";
+            this.button3.Size = new System.Drawing.Size(177, 43);
+            this.button3.TabIndex = 19;
+            this.button3.Text = "Graphs";
+            this.button3.UseVisualStyleBackColor = true;
+            this.button3.Click += new System.EventHandler(this.button3_Click_1);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1436, 594);
+            this.Controls.Add(this.button3);
             this.Controls.Add(this.comboBox1);
             this.Controls.Add(this.Utilization);
             this.Controls.Add(this.IdleProb);
@@ -290,6 +302,7 @@
         private System.Windows.Forms.TextBox IdleProb;
         private System.Windows.Forms.TextBox Utilization;
         private System.Windows.Forms.ComboBox comboBox1;
+        private System.Windows.Forms.Button button3;
     }
 }
 

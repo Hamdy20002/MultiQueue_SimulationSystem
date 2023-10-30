@@ -10,6 +10,7 @@ using System.Windows.Forms;
 using MultiQueueModels;
 using MultiQueueTesting;
 using System.IO;
+
 namespace MultiQueueSimulation
 {
     public partial class Form1 : Form
@@ -116,6 +117,13 @@ namespace MultiQueueSimulation
         private void MaxQueueLength_TextChanged(object sender, EventArgs e)
         {
 
+        }
+
+        private void button3_Click_1(object sender, EventArgs e)
+        {
+            this.Hide();
+            Form2 form2 = new Form2(SimSys);
+            form2.Show();
         }
     }
 }
