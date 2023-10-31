@@ -40,7 +40,7 @@ namespace MultiQueueSimulation
             // 
             // chart1
             // 
-            chartArea1.AxisX.Maximum = 50D;
+            chartArea1.AxisX.Maximum = 20D;
             chartArea1.AxisX.Minimum = 0D;
             chartArea1.AxisX.ScaleBreakStyle.LineColor = System.Drawing.Color.Silver;
             chartArea1.Name = "ChartArea1";

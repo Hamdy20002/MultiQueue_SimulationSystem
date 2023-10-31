@@ -216,7 +216,6 @@ namespace MultiQueueModels
                     case Enums.SelectionMethod.HighestPriority:
                         {
                             int server = 0;
-                            int nxt_choosenserver = 0;
 
                             while (server < NumberOfServers)
                             {
@@ -249,7 +248,7 @@ namespace MultiQueueModels
                                 //Eighth column
                                 int start = endtimeofserve.Min();
                                 customer.StartTime = start;
-                                nxt_choosenserver = endtimeofserve.IndexOf(customer.StartTime);
+                                int nxt_choosenserver = endtimeofserve.IndexOf(customer.StartTime);
                                 //sixth column
                                 customer.ServiceTime = assignnum(customer.RandomService, Servers[nxt_choosenserver].TimeDistribution);
                                 endtimeofserve[nxt_choosenserver] = customer.StartTime + customer.ServiceTime;
@@ -334,13 +333,13 @@ namespace MultiQueueModels
                                 customer.EndTime = endtimeofserve[nxt_choosenserver];
                                 //Tenth column
                                 customer.TimeInQueue = (customer.StartTime - customer.ArrivalTime);
-
+                                totalwait.Add(customer.TimeInQueue);
                                 Servers[nxt_choosenserver].TotalWorkingTime += customer.ServiceTime;
                                 //seventh column
                                 customer.AssignedServer = Servers[nxt_choosenserver];
                             }
 
-                            if (StopingFlag == 1)
+                            if (customer.EndTime > StoppingNumber && StopingFlag == 1)
                             {
                                 if (customer.EndTime > StoppingNumber)
                                 {
@@ -402,13 +401,13 @@ namespace MultiQueueModels
                                 customer.EndTime = endtimeofserve[nxt_choosenserver];
                                 //Tenth column
                                 customer.TimeInQueue = (customer.StartTime - customer.ArrivalTime);
-
+                                totalwait.Add(customer.TimeInQueue);
                                 Servers[nxt_choosenserver].TotalWorkingTime += customer.ServiceTime;
                                 //seventh column
                                 customer.AssignedServer = Servers[nxt_choosenserver];
                         }
 
-                        if (StopingFlag == 1)
+                        if (customer.EndTime > StoppingNumber && StopingFlag == 1)
                         {
                             if (customer.EndTime > StoppingNumber)
                             {
