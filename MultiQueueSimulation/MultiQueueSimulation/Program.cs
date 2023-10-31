@@ -17,8 +17,8 @@ namespace MultiQueueSimulation
         static void Main()
         {
             SimulationSystem system = new SimulationSystem();
-            system.Run("G:/FCIS/4th/semester1/Laps/Modeling/Project/Simulation24/MultiQueueSimulation/MultiQueueSimulation/TestCases/TestCase3.txt");
-            string result = TestingManager.Test(system, Constants.FileNames.TestCase3);
+            system.Run("G:/FCIS/4th/semester1/Laps/Modeling/Project/Simulation24/MultiQueueSimulation/MultiQueueSimulation/TestCases/TestCase2.txt");
+            string result = TestingManager.Test(system, Constants.FileNames.TestCase2);
             MessageBox.Show(result);
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);

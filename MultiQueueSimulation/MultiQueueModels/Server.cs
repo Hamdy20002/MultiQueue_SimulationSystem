@@ -20,6 +20,8 @@ namespace MultiQueueModels
 
         public List<TimeDistribution> TimeDistribution;
 
+        public int NoCustomer { get; set; }
+
         //optional if needed use them
         public int FinishTime { get; set; }
         public int TotalWorkingTime { get; set; }
@@ -32,7 +34,15 @@ namespace MultiQueueModels
         }
         public decimal AvServiceTime(decimal totalservicetime, decimal cusnumber)
         {
-            return (decimal)(totalservicetime / cusnumber);
+            try
+            {
+                return (decimal)(totalservicetime / cusnumber);
+            }
+            catch
+            {
+                return 0;
+            }
+            
         }
 
         public decimal Utili(decimal totalservicetime, decimal totalruntime)

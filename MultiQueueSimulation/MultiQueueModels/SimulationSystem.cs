@@ -61,24 +61,31 @@ namespace MultiQueueModels
 
 
 
-        public int[] CalculateMaxWaitingCustomers(List<SimulationCase> SimulationTable)
+        public int CalculateMaxWaitingCustomers(List<SimulationCase> SimulationTable)
         {
             int arrival = 0;
-            int start = 1;
+            int start = 0;
             int localmax = 0;
-            int[] Arr = { 0, 0 };
+            int MaxQueueLength = 0;
+            bool flag = false;
             foreach (SimulationCase customer in SimulationTable)
             {
                 if (customer.TimeInQueue > 0)
                 {
-                    Arr[1]++; //total customers in queue
+                    if(flag == false)
+                    {
+                        arrival = customer.ArrivalTime;
+                        start = customer.StartTime;
+                        flag = true;
+                    }
+
                     if (customer.ArrivalTime >= arrival & customer.ArrivalTime < start)
                     {
                         localmax++;
                     }
                     else
                     {
-                        Arr[0] = Math.Max(Arr[0], localmax); // MaxQueueLength
+                        MaxQueueLength = Math.Max(MaxQueueLength, localmax);
                         localmax = 0;
                         arrival = customer.ArrivalTime;
                         start = customer.StartTime;
@@ -91,7 +98,7 @@ namespace MultiQueueModels
 
 
             }
-            return Arr;
+            return MaxQueueLength;
         }
 
 
@@ -166,7 +173,7 @@ namespace MultiQueueModels
 
             SimulationCase customer = new SimulationCase();
 
-            List<int> totalwait = new List<int>();
+            List<int> TotalNumberCustomerWait = new List<int>();
 
             int StopingFlag = 0;
             if (StoppingCriteria == Enums.StoppingCriteria.SimulationEndTime)
@@ -233,6 +240,7 @@ namespace MultiQueueModels
                                     Servers[server].TotalWorkingTime += customer.ServiceTime;
                                     //seventh column
                                     customer.AssignedServer = Servers[server];
+                                    customer.AssignedServer.NoCustomer += 1;
 
                                     flag = true;
                                     break;
@@ -256,10 +264,11 @@ namespace MultiQueueModels
                                 customer.EndTime = endtimeofserve[nxt_choosenserver];
                                 //Tenth column
                                 customer.TimeInQueue = (customer.StartTime - customer.ArrivalTime);
-                                totalwait.Add(customer.TimeInQueue);
+                                TotalNumberCustomerWait.Add(customer.TimeInQueue);
                                 Servers[nxt_choosenserver].TotalWorkingTime += customer.ServiceTime;
                                 //seventh column
                                 customer.AssignedServer = Servers[nxt_choosenserver];
+                                customer.AssignedServer.NoCustomer += 1;
                             }
 
                             if (customer.EndTime > StoppingNumber && StopingFlag == 1)
@@ -317,6 +326,7 @@ namespace MultiQueueModels
                                 Servers[server].TotalWorkingTime += customer.ServiceTime;
                                 //seventh column
                                 customer.AssignedServer = Servers[server];
+                                customer.AssignedServer.NoCustomer += 1;
                             }
                             else
                             {
@@ -333,10 +343,11 @@ namespace MultiQueueModels
                                 customer.EndTime = endtimeofserve[nxt_choosenserver];
                                 //Tenth column
                                 customer.TimeInQueue = (customer.StartTime - customer.ArrivalTime);
-                                totalwait.Add(customer.TimeInQueue);
+                                TotalNumberCustomerWait.Add(customer.TimeInQueue);
                                 Servers[nxt_choosenserver].TotalWorkingTime += customer.ServiceTime;
                                 //seventh column
                                 customer.AssignedServer = Servers[nxt_choosenserver];
+                                customer.AssignedServer.NoCustomer += 1;
                             }
 
                             if (customer.EndTime > StoppingNumber && StopingFlag == 1)
@@ -384,8 +395,9 @@ namespace MultiQueueModels
                                 Servers[server].TotalWorkingTime += customer.ServiceTime;
                                 //seventh column
                                 customer.AssignedServer = Servers[server];
-                                
-                        }
+                                customer.AssignedServer.NoCustomer += 1;
+
+                            }
                         else
                         {
                                 //simulation queue
@@ -401,11 +413,12 @@ namespace MultiQueueModels
                                 customer.EndTime = endtimeofserve[nxt_choosenserver];
                                 //Tenth column
                                 customer.TimeInQueue = (customer.StartTime - customer.ArrivalTime);
-                                totalwait.Add(customer.TimeInQueue);
+                                TotalNumberCustomerWait.Add(customer.TimeInQueue);
                                 Servers[nxt_choosenserver].TotalWorkingTime += customer.ServiceTime;
                                 //seventh column
                                 customer.AssignedServer = Servers[nxt_choosenserver];
-                        }
+                                customer.AssignedServer.NoCustomer += 1;
+                            }
 
                         if (customer.EndTime > StoppingNumber && StopingFlag == 1)
                         {
@@ -438,21 +451,20 @@ namespace MultiQueueModels
             {
                 int idle = (customer.EndTime - serv.TotalWorkingTime);
                 serv.IdleProbability = serv.IdleProb(idle, customer.EndTime);
-                serv.AverageServiceTime = serv.AvServiceTime(serv.TotalWorkingTime, SimulationTable.Count);
+                serv.AverageServiceTime = serv.AvServiceTime(serv.TotalWorkingTime, serv.NoCustomer);
                 serv.Utilization = serv.Utili(serv.TotalWorkingTime, customer.EndTime);
-
             }
 
             #endregion
 
             # region PerformanceMeasures Calculations
 
-            int[] ret = CalculateMaxWaitingCustomers(SimulationTable);
-            PerformanceMeasures.MaxQueueLength = ret[0];
-            int sum = totalwait.Sum();
-            PerformanceMeasures.AverageWaitingTime = PerformanceMeasures.AvWaitingTime(sum, cus_num);
-            int count = totalwait.Count();
-            PerformanceMeasures.WaitingProbability = PerformanceMeasures.WaitProbability(count, cus_num);
+            int ret = CalculateMaxWaitingCustomers(SimulationTable);
+            PerformanceMeasures.MaxQueueLength = ret;
+            int sum = TotalNumberCustomerWait.Sum();
+            PerformanceMeasures.AverageWaitingTime = PerformanceMeasures.AvWaitingTime(sum, cus_num-1);
+            int count = TotalNumberCustomerWait.Count();
+            PerformanceMeasures.WaitingProbability = PerformanceMeasures.WaitProbability(count, cus_num-1);
 
             # endregion
 

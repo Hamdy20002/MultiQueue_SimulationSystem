@@ -69,46 +69,6 @@ namespace MultiQueueSimulation
             {
                 i = 0;
             }
-
-            //for (int j = 0; j < ServerRange.Count; j++)
-            //{
-            //    while (i <= SysEndtime)
-            //    {
-            //        i++;
-            //        if (i >= ServerRange[j].StartTime && i <= ServerRange[j].EndTime)
-            //        {
-            //            S.Points.AddXY(i, 1);
-            //            if (j != ServerRange.Count - 1)
-            //            {
-            //                if (ServerRange[j].EndTime == ServerRange[j + 1].StartTime)
-            //                {
-            //                    for (int K = ServerRange[j].StartTime; K <= ServerRange[j + 1].EndTime; K++)
-            //                    {
-            //                        S.Points.AddXY(K, 1);
-            //                    }
-            //                }
-            //                else
-            //                {
-            //                    for (int z = ServerRange[j].EndTime; z < ServerRange[j + 1].StartTime; z++)
-            //                    {
-            //                        S.Points.AddXY(z, 0);
-            //                    }
-            //                    //break;
-            //                }
-
-            //            }
-
-            //        }
-            //        else
-            //        {
-            //            S.Points.AddXY(i, 0);
-            //            break;
-            //        }
-
-            //    }
-
-            //}
-
             for (int j = 0; j < ServerRange.Count; j++)
             {
                 while (i <= SysEndtime)
@@ -130,7 +90,7 @@ namespace MultiQueueSimulation
                             }
                             else
                             {
-                                for (int z = ServerRange[j].EndTime; z < ServerRange[j + 1].StartTime; z++)
+                                for (int z = ServerRange[j].EndTime; z <= ServerRange[j + 1].StartTime; z++)
                                 {
                                     S.Points.AddXY(z, 0);
                                 }
