@@ -121,7 +121,7 @@ namespace MultiQueueSimulation
 
         private void button3_Click_1(object sender, EventArgs e)
         {
-            this.Hide();
+            //this.Hide();
             Form2 form2 = new Form2(SimSys);
             form2.Show();
         }

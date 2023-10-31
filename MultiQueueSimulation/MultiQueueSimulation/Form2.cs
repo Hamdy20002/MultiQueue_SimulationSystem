@@ -16,7 +16,7 @@ namespace MultiQueueSimulation
     public partial class Form2 : Form
     {
         public SimulationSystem SimSys;
-        public List<SimulationCase> ServerRange;
+        public List<SimulationCase> ServerRange = new List<SimulationCase>();
         public Form2(SimulationSystem SimSys)
         {
             this.SimSys = SimSys;
@@ -27,19 +27,16 @@ namespace MultiQueueSimulation
         {
             List<SimulationCase> Customer = new List<SimulationCase>();
 
-            for (int i = 0; i < SimSys.NumberOfServers; i++)
+            foreach (SimulationCase j in SimSys.SimulationTable)
             {
-                foreach (SimulationCase j in SimSys.SimulationTable)
+                if (j.AssignedServer.ID == server)
                 {
-                    if(j.AssignedServer.ID == i+1)
-                    {
-                        Customer.Add(j);
-                    }
+                    Customer.Add(j);
                 }
             }
-                
 
             return Customer;
+
             //List<List<List<int>>> Serverrange = new List<List<List<int>>>();
             //List<int> Customer_count = new List<int>();
             //foreach (SimulationCase i in SimSys.SimulationTable)
@@ -62,22 +59,23 @@ namespace MultiQueueSimulation
 
         private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
-            ServerRange = ShowGraph(Convert.ToInt32(this.comboBox1.SelectedIndex));
+            ServerRange = ShowGraph(Convert.ToInt32(this.comboBox1.SelectedItem));
 
             //chart1.Series.Clear();
             //chart1.Series.Add("ServerBusyTime");
             //chart1.Series["ServerBusyTime"].ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.StepLine;
             //chart1.Series["ServerBusyTime"].Color = Color.Red;
-
+            string name = (this.comboBox1.SelectedItem).ToString();
+            name = "Server " + name + " Busy Time";
             chart1.Series.Clear();
-            Series S = chart1.Series.Add("Server Busy Time");
+            Series S = chart1.Series.Add(name);
             S.ChartType = SeriesChartType.Area;
             chart1.ChartAreas[0].AxisX.Minimum = 0;
-
+            chart1.ChartAreas[0].AxisX.Maximum = 20;
 
             int index = (SimSys.SimulationTable.Count - 1);
             int SysEndtime = SimSys.SimulationTable[index].EndTime;
-            int i = -1;
+            int i = ServerRange[0].StartTime;
             for (int j = 0; j < ServerRange.Count; j++)
             {
                 while (i <= SysEndtime)
@@ -85,21 +83,24 @@ namespace MultiQueueSimulation
                     i++;
                     if (i >= ServerRange[j].StartTime && i <= ServerRange[j].EndTime)
                     {
+                        S.Points.AddXY(ServerRange[j].StartTime, 0);
                         S.Points.AddXY(i, 1);
+                        S.Points.AddXY(ServerRange[j].EndTime, 0);
                     }
                     else
                     {
-                        S.Points.AddXY(i-1, 0);
+                        //S.Points.AddXY(i - 1, 0);
                         S.Points.AddXY(i, 0);
-                        S.Points.AddXY(i+1, 0);
+                        //S.Points.AddXY(i + 1, 0);
                         break;
+
                     }
                 }
 
             }
 
 
-            
+
 
 
 
