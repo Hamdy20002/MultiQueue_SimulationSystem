@@ -351,8 +351,75 @@ namespace MultiQueueModels
                             break;
                         }
 
-                    # endregion
+                    #endregion
 
+                    # region LeastUtilization
+
+                    case Enums.SelectionMethod.LeastUtilization:
+                    {
+                        List<Server> availableServers = new List<Server>();
+                        int server = 0;
+                        while (server < NumberOfServers)
+                        {
+                            if (customer.ArrivalTime >= endtimeofserve[server])
+                            {
+                                availableServers.Add(Servers[server]);
+                            }
+                            server++;
+                        }
+
+                        if (availableServers.Count > 0)
+                        {
+                                //least utilization of avalible servers
+                                availableServers.Sort((x,y) => x.TotalWorkingTime.CompareTo(y.TotalWorkingTime));
+                                server = (availableServers[0].ID)-1;
+                                //Eighth column
+                                customer.StartTime = customer.ArrivalTime;
+                                //sixth column
+                                customer.ServiceTime = assignnum(customer.RandomService, Servers[server].TimeDistribution);
+                                endtimeofserve[server] = customer.StartTime + customer.ServiceTime;
+                                //ninth column
+                                customer.EndTime = endtimeofserve[server];
+                                //Tenth column
+                                customer.TimeInQueue = (customer.StartTime - customer.ArrivalTime);
+                                Servers[server].TotalWorkingTime += customer.ServiceTime;
+                                //seventh column
+                                customer.AssignedServer = Servers[server];
+                                
+                        }
+                        else
+                        {
+                                //simulation queue
+
+                                //Eighth column
+                                int start = endtimeofserve.Min();
+                                customer.StartTime = start;
+                                int nxt_choosenserver = endtimeofserve.IndexOf(customer.StartTime);
+                                //sixth column
+                                customer.ServiceTime = assignnum(customer.RandomService, Servers[nxt_choosenserver].TimeDistribution);
+                                endtimeofserve[nxt_choosenserver] = customer.StartTime + customer.ServiceTime;
+                                //ninth column
+                                customer.EndTime = endtimeofserve[nxt_choosenserver];
+                                //Tenth column
+                                customer.TimeInQueue = (customer.StartTime - customer.ArrivalTime);
+
+                                Servers[nxt_choosenserver].TotalWorkingTime += customer.ServiceTime;
+                                //seventh column
+                                customer.AssignedServer = Servers[nxt_choosenserver];
+                        }
+
+                        if (StopingFlag == 1)
+                        {
+                            if (customer.EndTime > StoppingNumber)
+                            {
+                                goto passsystemtime;
+                            }
+                        }
+
+                        break;
+                    }
+
+                    #endregion
                 }
 
                 SimulationTable.Add(customer);
