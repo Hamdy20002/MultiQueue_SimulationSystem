@@ -30,13 +30,13 @@ namespace MultiQueueModels
 
         public decimal IdleProb(decimal totalidletime, decimal totalrun)
         {
-            return (decimal)(totalidletime / totalrun);
+            return (totalidletime / totalrun);
         }
         public decimal AvServiceTime(decimal totalservicetime, decimal cusnumber)
         {
             try
             {
-                return (decimal)(totalservicetime / cusnumber);
+                return (totalservicetime / cusnumber);
             }
             catch
             {
@@ -47,7 +47,7 @@ namespace MultiQueueModels
 
         public decimal Utili(decimal totalservicetime, decimal totalruntime)
         {
-            return (decimal)(totalservicetime / totalruntime);
+            return (totalservicetime / totalruntime);
         }
 
         # endregion
